@@ -1,22 +1,23 @@
-useSelf_skill Heal {
-  hp < 70%
-  notWhileSitting 1
+partySkill Heal {
+	lvl 3
+	target_hp < 95%
+	sp > 10 %
 }
 
-useSelf_skill Blessing {
-  whenStatusInactive Blessing
-  target_followTarget 1
-  timeout 60
+partySkill Blessing {
+	lvl 3
+	sp > 40
+	notInTown 1
+	timeout 3
+	target_whenStatusInactive Blessing
+	target_timeout 240
 }
 
-useSelf_skill Increase Agility {
-  whenStatusInactive Increase Agility
-  target_followTarget 1
-  timeout 60
-}
-
-useSelf_skill Heal {
-  target_followTarget 1
-  hp < 60%
-  timeout 5
+partySkill Increase AGI {
+	lvl 5
+	sp > 45
+	notInTown 0
+	timeout 3
+	target_whenStatusInactive Increase AGI
+	target_timeout 240
 }
