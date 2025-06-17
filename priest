@@ -1,52 +1,22 @@
-partySkill Blessing {
-lvl 5
-sp > 80
-stopWhenHit 1
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-target Filha da Desordem
-target_whenStatusInactive Blessing
-target_timeout 240
+useSelf_skill Heal {
+  hp < 70%
+  notWhileSitting 1
 }
 
-partySkill Increase Agility {
-lvl 5
-sp > 80
-stopWhenHit 1
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-target Filha da Desordem
-target_whenStatusInactive Increase Agility
-target_timeout 240
+useSelf_skill Blessing {
+  whenStatusInactive Blessing
+  target_followTarget 1
+  timeout 60
 }
 
-partySkill Heal {
-lvl 3
-sp > 10%
-hp < 70%
-stopWhenHit 1
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-target Filha da Desordem
-target_whenStatusInactive Increase Agility
-target_timeout 240
+useSelf_skill Increase Agility {
+  whenStatusInactive Increase Agility
+  target_followTarget 1
+  timeout 60
 }
 
-useSelf_skill heal {
-	lvl 10
-	maxCastTime 0
-	minCastTime 0
-	hp < 50%
-	sp > 10%
-}
-
-useSelf_skill Increase AGI {
-	lvl 10
-	maxCastTime 0
-	minCastTime 0
-	hp
-	sp > 10%
+useSelf_skill Heal {
+  target_followTarget 1
+  hp < 60%
+  timeout 5
 }
