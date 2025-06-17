@@ -1,0 +1,66 @@
+#############################
+## QUEST EDEN 60–69         ##
+## Recompensa: Eden Weapon II
+#############################
+
+# Macro auxiliar de teleport (se necessário)
+macro teleportEden {
+  do conf butTele 0
+  pause 1
+  do tele
+  pause 1
+  do conf butTele 1
+}
+
+# 1) Inicia a quest assim que atingir nível 60
+automacro eden60_start {
+  BaseLevel >= 60
+  QuestActive 0
+  run-once 1
+  call {
+    call teleportEden
+    # Vai ao NPC Instructor Ur para iniciar
+    do move moc_para01 47 39
+    do talknpc 47 39 r0
+    do conf lockMap none
+    do conf ai auto
+  }
+}
+
+# 2) Caça de Merman (15) e Strouf (10)
+automacro eden60_farm {
+  QuestActive 60 + 0  # placeholder, use ID real da quest
+  run-once 0
+  call {
+    # trava no mapa de grind (ajuste conforme LATAM)
+    do conf lockMap iz_dun04
+    do conf lockMap_x 43
+    do conf lockMap_y 46
+    do conf ai auto
+    # Mobs a caçar
+    do mconf Merman 1 0 0
+    do mconf Strouf 1 0 0
+    do conf teleportAuto_minAggressivesInLock 5
+  }
+}
+
+# 3) Entrega da quest e coleta dos equipamentos
+automacro eden60_end {
+  QuestMonsterKill iz_dun04 15, iz_dun04 10
+  run-once 1
+  call {
+    do conf lockMap none
+    do call teleportEden
+    # Retorna para pegar os itens
+    do move moc_para01 47 39
+    do talknpc 47 39 r2
+    pause 1
+    # Equipamento Weapon II específico de classe, exemplo genericamente:
+    do eq Eden Group Weapon II
+    # Se quiser equipar armadura ou botas, adicione similares:
+    do eq Eden Group Armor II
+    do eq Eden Group Boots II
+    pause 2
+    do conf ai auto
+  }
+}
