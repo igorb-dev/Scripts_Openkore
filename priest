@@ -10,3 +10,12 @@ partySkill AL_INCAGI {
 	notPartyOnly 1
  	target_whenStatusInactive EFST_AGIUP
 }
+
+partySkill AL_HEAL {
+	lvl 5
+	sp > 15
+	target_hp < 80
+	notWhileSitting 1
+	notInTown 0
+	disabled 0
+}
