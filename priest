@@ -63,3 +63,25 @@ target Filha da Desordem
 target_whenStatusInactive Inc Agi
 target_timeout 240
 }
+
+
+
+automacro buffs_loop {
+  timeout 30
+  call buffs_on_target
+}
+
+macro buffs_on_target {
+  # Aumentar Agilidade se não tiver
+  if (!@isstatus(Filha da Desordem, Increase Agility)) do sp "Increase Agility" "Filha da Desordem"
+  pause 1
+
+  # Benção se não tiver
+  if (!@isstatus(Filha da Desordem, Blessing)) do sp "Blessing" "Filha da Desordem"
+  pause 1
+
+  # Cura se tiver com vida abaixo de 90%
+  if (@hp(Filha da Desordem) < 90) do sp "Heal" "Filha da Desordem"
+  pause 1
+}
+
