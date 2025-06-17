@@ -1,0 +1,35 @@
+partySkill Blessing {
+
+lvl 10
+sp > 80
+stopWhenHit 1
+inLockOnly 1
+notWhileSitting 1
+notInTown 1
+target Letskillyou
+target_whenStatusInactive Blessing
+target_timeout 240
+
+partySkill Kyrie Eleison {
+
+lvl 10
+sp > 80
+stopWhenHit 1
+inLockOnly 1
+notWhileSitting 1
+notInTown 1
+target Letskillyou
+target_whenStatusInactive Kyrie Eleison
+target_timeout 120
+
+partySkill Increase Agility {
+
+lvl 10
+sp > 80
+stopWhenHit 1
+inLockOnly 1
+notWhileSitting 1
+notInTown 1
+target Letskillyou
+target_whenStatusInactive Increase Agility
+target_timeout 240
