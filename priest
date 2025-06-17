@@ -1,87 +1,12 @@
-useSelf_skill Heal {
-lvl 3
-hp < 50
-sp > 20
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-disabled 0
+partySkill AL_BLESSING {
+ 	lvl 5
+ 	sp > 40
+ 	target_whenStatusInactive EFST_BLESSING
 }
 
-useSelf_skill Blessing {
-lvl 5
-sp > 20
-whenStatusInactive Blessing
-stopWhenHit 1
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-timeout 240
-disabled 0
+partySkill AL_INCAGI {
+ 	lvl 5
+ 	sp > 45
+	notPartyOnly 1
+ 	target_whenStatusInactive EFST_AGIUP
 }
-
-useSelf_skill Increase Agi {
-lvl 5
-sp > 20
-whenStatusInactive Inc Agi
-stopWhenHit 1
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-timeout 240
-disabled 0
-}
-
-partySkill Heal {
-lvl 3
-sp > 10
-notWhileSitting 1
-target Filha da Desordem
-target_hp < 90
-}
-
-partySkill Blessing {
-lvl 5
-sp > 20
-stopWhenHit 1
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-target Filha da Desordem
-target_whenStatusInactive Blessing
-target_timeout 240
-}
-
-partySkill Increase Agi {
-lvl 5
-sp > 20
-stopWhenHit 1
-inLockOnly 1
-notWhileSitting 1
-notInTown 1
-target Filha da Desordem
-target_whenStatusInactive Inc Agi
-target_timeout 240
-}
-
-
-
-automacro buffs_loop {
-  timeout 30
-  call buffs_on_target
-}
-
-macro buffs_on_target {
-  # Aumentar Agilidade se não tiver
-  if (!@isstatus(Filha da Desordem, Increase Agility)) do sp "Increase Agility" "Filha da Desordem"
-  pause 1
-
-  # Benção se não tiver
-  if (!@isstatus(Filha da Desordem, Blessing)) do sp "Blessing" "Filha da Desordem"
-  pause 1
-
-  # Cura se tiver com vida abaixo de 90%
-  if (@hp(Filha da Desordem) < 90) do sp "Heal" "Filha da Desordem"
-  pause 1
-}
-
